@@ -18,8 +18,13 @@ export default function AllCharacters() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newCharList = await filterCharacters(house);
-    setCharacters(newCharList);
+    if (house === 'default') {
+      const def = await getCharacters();
+      setCharacters(def);
+    } else {
+      const newCharList = await filterCharacters(house);
+      setCharacters(newCharList);
+    }
   };
 
   return (

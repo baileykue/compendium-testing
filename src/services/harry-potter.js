@@ -9,6 +9,5 @@ export async function filterCharacters(house) {
   const response = await fetch(`http://hp-api.herokuapp.com/api/characters/house/${house}`);
 
   const data = await response.json();
-  console.log(data);
   return data;
 }

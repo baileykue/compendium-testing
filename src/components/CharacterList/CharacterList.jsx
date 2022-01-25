@@ -7,8 +7,8 @@ export default function CharacterList({ characters }) {
         <div className="card" key={character.name}>
           <img src={character.image} />
           <h4>Name: {character.name}</h4>
-          <p>day of birth: {character.dateOfBirth}</p>
-          <p>patronus: {character.patronus}</p>
+          {character.dateOfBirth && <p>day of birth: {character.dateOfBirth}</p>}
+          {character.patronus && <p>patronus: {character.patronus}</p>}
         </div>
       ))}
     </div>
