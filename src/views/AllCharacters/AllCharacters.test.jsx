@@ -8,13 +8,24 @@ test('header and dropdown renders in a loading state', async () => {
     name: /welcome to hogwarts/i,
   });
   const crest = screen.getByAltText(/hogwarts crest/i);
-  const filter = screen.getByLabelText(/filter/i);
   const loading = screen.getByText(/loading characters/i);
 
   expect(loading).toBeInTheDocument();
-  expect(filter.children.length).toEqual(5);
   expect(header).toBeInTheDocument();
   expect(crest).toBeInTheDocument();
+  await waitForElementToBeRemoved(loading);
+});
+
+test('the controls properly render on the page', async () => {
+  render(<AllCharacters />);
+
+  const loading = screen.getByText(/loading characters/i);
+  const filter = screen.getByLabelText(/filter/i);
+  const button = screen.getByRole('button', { name: /submit/i });
+
+  expect(loading).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
+  expect(filter.children.length).toEqual(5);
   await waitForElementToBeRemoved(loading);
 });
 
