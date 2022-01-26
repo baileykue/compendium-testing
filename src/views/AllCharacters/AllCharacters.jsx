@@ -41,14 +41,15 @@ export default function AllCharacters() {
           src={
             'https://www.kindpng.com/picc/m/19-198867_transparent-harry-potter-hogwarts-crest-hd-png-download.png'
           }
+          alt="Hogwarts Crest"
         />
         Welcome to Hogwarts
       </h1>
+      <Controls setHouse={setHouse} handleSubmit={handleSubmit} />
       {loading ? (
         <h1>Loading Characters...</h1>
       ) : (
         <>
-          <Controls setHouse={setHouse} handleSubmit={handleSubmit} />
           <CharacterList characters={characters} />
         </>
       )}
