@@ -7,30 +7,51 @@ import Controls from '../../components/Controls/Controls';
 export default function AllCharacters() {
   const [characters, setCharacters] = useState([]);
   const [house, setHouse] = useState('default');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCharacters();
-      setCharacters(data);
+      const uniqueData = [...new Set(data)];
+      setCharacters(uniqueData);
+      setLoading(false);
     };
     fetchData();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (house === 'default') {
       const def = await getCharacters();
       setCharacters(def);
+      setLoading(false);
     } else {
-      const newCharList = await filterCharacters(house);
-      setCharacters(newCharList);
+      let newCharList = await filterCharacters(house);
+      const uniqueList = [...new Set(newCharList)];
+      setCharacters(uniqueList);
+      setLoading(false);
     }
   };
 
   return (
-    <div>
-      <Controls setHouse={setHouse} handleSubmit={handleSubmit} />
-      <CharacterList characters={characters} />
-    </div>
+    <>
+      <h1>
+        <img
+          src={
+            'https://www.kindpng.com/picc/m/19-198867_transparent-harry-potter-hogwarts-crest-hd-png-download.png'
+          }
+        />
+        Welcome to Hogwarts
+      </h1>
+      {loading ? (
+        <h1>Loading Characters...</h1>
+      ) : (
+        <>
+          <Controls setHouse={setHouse} handleSubmit={handleSubmit} />
+          <CharacterList characters={characters} />
+        </>
+      )}
+    </>
   );
 }
