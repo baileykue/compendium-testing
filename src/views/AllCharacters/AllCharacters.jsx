@@ -38,6 +38,7 @@ export default function AllCharacters() {
     <>
       <h1>
         <img
+          className="crest"
           src={
             'https://www.kindpng.com/picc/m/19-198867_transparent-harry-potter-hogwarts-crest-hd-png-download.png'
           }
