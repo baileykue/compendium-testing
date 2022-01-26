@@ -5,7 +5,7 @@ export default function CharacterList({ characters }) {
     <div className="card">
       <ul>
         {characters.map((character) => (
-          <li key={character.name}>
+          <li key={character.id}>
             <img src={character.image} />
             <h4>Name: {character.name}</h4>
             {character.dateOfBirth && <p>day of birth: {character.dateOfBirth}</p>}
