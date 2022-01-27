@@ -1,5 +1,5 @@
 export async function getCharacters() {
-  const response = await fetch('http://hp-api.herokuapp.com/api/characters/staff');
+  const response = await fetch('https://hp-api.herokuapp.com/api/characters/staff');
 
   const data = await response.json();
 
@@ -13,7 +13,7 @@ export async function getCharacters() {
 }
 
 export async function filterCharacters(house) {
-  const response = await fetch(`http://hp-api.herokuapp.com/api/characters/house/${house}`);
+  const response = await fetch(`https://hp-api.herokuapp.com/api/characters/house/${house}`);
 
   const data = await response.json();
 
