@@ -1,7 +1,7 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import AllCharacters from './AllCharacters';
 
-test('header and dropdown renders in a loading state', async () => {
+test.skip('header and dropdown renders in a loading state', async () => {
   render(<AllCharacters />);
 
   const header = screen.getByRole('heading', {
@@ -16,7 +16,7 @@ test('header and dropdown renders in a loading state', async () => {
   await waitForElementToBeRemoved(loading);
 });
 
-test('the controls properly render on the page', async () => {
+test.skip('the controls properly render on the page', async () => {
   render(<AllCharacters />);
 
   const loading = screen.getByText(/loading characters/i);
@@ -29,7 +29,7 @@ test('the controls properly render on the page', async () => {
   await waitForElementToBeRemoved(loading);
 });
 
-test('list of characters renders ', async () => {
+test.skip('list of characters renders ', async () => {
   render(<AllCharacters />);
 
   const loading = screen.getByText(/loading/i);

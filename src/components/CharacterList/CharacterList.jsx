@@ -9,7 +9,7 @@ export default function CharacterList({ characters }) {
             {character.image ? (
               <img src={character.image} className="selfie" />
             ) : (
-              <img scr={`${process.env.PUBLIC_URL}/profile/profile.png`} className="selfie" />
+              <img src={`${process.env.PUBLIC_URL}/profile/profile.png`} className="selfie" />
             )}
             <h4>Name: {character.name}</h4>
             {character.dateOfBirth && <p>day of birth: {character.dateOfBirth}</p>}
