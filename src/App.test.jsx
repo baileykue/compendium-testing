@@ -1,19 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import { findByRole, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
-test.skip('we can filter characters correctly', async () => {
+test('we can filter characters correctly', async () => {
   render(<App />);
 
-  const filter = await screen.findByLabelText(/filter/i);
-  const house = filter.children[3].textContent;
-  userEvent.selectOptions(filter, house);
+  const filter = await screen.findByRole('combobox');
+  userEvent.selectOptions(filter, 'Hufflepuff');
 
-  const characters = await screen.findAllByText(house, { exact: false });
-  const charHouses = characters.map((pokemon) => pokemon.textContent);
+  expect(screen.getByRole('option', { name: /hufflepuff/i }).selected).toBe(true);
 
-  const handleHouseCheck = (h) => h.toLowerCase().includes(house);
+  const button = screen.getByRole('button', { name: /submit/i });
+  userEvent.click(button);
+  const charList = await screen.findAllByRole('listitem');
 
-  const hasSameType = charHouses.every(handleHouseCheck);
-  expect(hasSameType).toBe(true);
+  expect(charList).toHaveLength(18);
 });
