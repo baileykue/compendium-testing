@@ -12,8 +12,7 @@ export default function AllCharacters() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCharacters();
-      const uniqueData = [...new Set(data)];
-      setCharacters(uniqueData);
+      setCharacters(data);
       setLoading(false);
     };
     fetchData();
@@ -27,9 +26,8 @@ export default function AllCharacters() {
       setCharacters(def);
       setLoading(false);
     } else {
-      let newCharList = await filterCharacters(house);
-      const uniqueList = [...new Set(newCharList)];
-      setCharacters(uniqueList);
+      const data = await filterCharacters(house);
+      setCharacters(data);
       setLoading(false);
     }
   };
