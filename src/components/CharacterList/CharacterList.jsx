@@ -4,7 +4,7 @@ export default function CharacterList({ characters }) {
   return (
     <div className="page">
       <ul className="list">
-        {characters?.map((character) => (
+        {characters.map((character) => (
           <li key={character.id} className="card">
             {character.image ? (
               <img src={character.image} className="selfie" />
