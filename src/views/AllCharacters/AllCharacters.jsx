@@ -1,8 +1,9 @@
 import React from 'react';
-import { filterCharacters, getCharacters } from '../../services/harry-potter';
+import { getCharacters } from '../../services/harry-potter';
 import { useEffect, useState } from 'react';
 import CharacterList from '../../components/CharacterList/CharacterList';
 import Controls from '../../components/Controls/Controls';
+import { filterHook } from '../../hooks/FilterHook';
 
 export default function AllCharacters() {
   const [characters, setCharacters] = useState([]);
@@ -21,15 +22,7 @@ export default function AllCharacters() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (house === 'default') {
-      const def = await getCharacters();
-      setCharacters(def);
-      setLoading(false);
-    } else {
-      const data = await filterCharacters(house);
-      setCharacters(data);
-      setLoading(false);
-    }
+    filterHook(house, setCharacters, setLoading);
   };
 
   return (
