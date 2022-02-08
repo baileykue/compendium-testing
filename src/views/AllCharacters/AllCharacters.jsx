@@ -3,16 +3,12 @@ import { getCharacters, filterCharacters } from '../../services/harry-potter';
 import { useState } from 'react';
 import CharacterList from '../../components/CharacterList/CharacterList';
 import Controls from '../../components/Controls/Controls';
-//import { useFilter } from '../../hooks/FilterHook';
 import { useData } from '../../hooks/DataHook';
 
 export default function AllCharacters() {
-  //const [characters, setCharacters] = useState([]);
-  const [house, setHouse] = useState('default');
-  //const [loading, setLoading] = useState(true);
-
   const { characters, loading, setLoading, setCharacters } = useData();
-  console.log('characters', characters);
+
+  const [house, setHouse] = useState('default');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
