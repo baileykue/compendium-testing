@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+
 * {
   color: rgba(40, 40, 40, 0.9);
+  font-family: 'Supermercado One', cursive;
 }
 
 .App {
@@ -32,12 +35,17 @@
 
 .card {
   text-align: center;
+  width: 20vw;
 }
 
 .selfie {
   width: 20vw;
   height: 45vh;
   object-fit: contain;
+}
+
+.dot {
+  width: 15vw;
 }
 
 select {
@@ -50,4 +58,8 @@ select {
 button {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
+}
+
+p {
+  margin: 1px;
 }
