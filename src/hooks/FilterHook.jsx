@@ -1,7 +1,6 @@
-import { getCharacters } from '../services/harry-potter';
-import { filterCharacters } from '../services/harry-potter';
+import { getCharacters, filterCharacters } from '../services/harry-potter';
 
-export async function filterHook(house, setCharacters, setLoading) {
+export async function useFilter(house, setCharacters, setLoading) {
   if (house === 'default') {
     const def = await getCharacters();
     setCharacters(def);
